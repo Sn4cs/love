@@ -1,0 +1,128 @@
+body {
+    background-color: #ffe4e1;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+  .button {
+    background: none;
+    border: none;
+    color: #ff69b4;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .title {
+    font-size: 24px;
+    color: #ff1493;
+    margin-bottom: 10px;
+  }
+  .description {
+    color: #555;
+    margin-bottom: 20px;
+  }
+  .counter {
+    font-size: 20px;
+    color: #ff1493;
+    margin: 20px 0;
+  }
+  .album-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 60px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .album {
+    background-color: #ffb6c1;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  .album img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .album:hover {
+    transform: scale(1.05);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  .album:active {
+    transform: scale(0.95);
+  }
+  /* Keyframes para animação de shake */
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  .shake {
+    background: none;
+    border: none;
+    color: #ff69b4;
+    font-size: 16px;
+    cursor: pointer;
+    animation: shake 0.7s infinite;
+  }
+  /* Estilo da mensagem */
+  .message {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Garantir que fique acima de outros elementos */
+  }
+  /* Estilo do fundo desfocado */
+  .blurred {
+    position: relative;
+  }
+  .blurred > *:not(#messageBox) {
+    filter: blur(5px);
+  }
+  button.close {
+    margin-top: 10px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  /* Estilo do bloqueio */
+  .overlay {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    z-index: 9998; /* Abaixo da caixa de mensagem */
+  }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <link type="text/javascript" href="index.js"/>
+  <title>Nosso Álbum</title>
+  
+</head>
+<body>
+  <div class="header">
+    <button class="button" id="dayCounter" onclick="showCounter()">📅  Dias Juntos</button>
+    <button id="specialAnimation" class="shake" onclick="showMessage('❤️\n\nEu amo tanto você que viveria a eternidade por você\n'); stopAnimation();">💌 Mensagem Especial</button>
+  </div>
+
+  <br>
+  <h1 class="title">Nosso Álbum</h1>
+  <p class="description">Cada foto, um pedacinho da nossa história ❤️</p>
+  
+  <br><br><br><br><br><br>
+
+  <div class="album-container">
+    <div class="album" onclick="window.location.href='primeiros-momentos.html'">
+      <img src="./img/Capa/inicio.jpeg" alt="Primeiros Momentos">
+      Primeiros Momentos
+    </div>
+    <div class="album" onclick="window.location.href='nossos-melhores-dias.html'">
+      <img src="./img/Capa/felizes.jpg" alt="Nossos Melhores Dias">
+      Nossos Melhores Dias
+    </div>
+    <div class="album" onclick="window.location.href='risos-e-bobeiras.html'">
+      <img src="./img/Capa/risos.jpg" alt="Risos e Bobeiras">
+      Risos e Bobeiras
+    </div>
+  </br>
+    <div class="album" onclick="window.location.href='nossos-sonhos.html'">
+      <img src="./img/Capa/sonhos.jpg" alt="Nossos Sonhos">
+      Nossos Sonhos
+    </div>
+  </div>
+
+  <!-- Caixa de mensagem -->
+  <div class="message" id="messageBox">
+    <span id="messageText"></span>
+    <button class="close" onclick="hideMessage()">Fechar</button>
+  </div>
+
+  <!-- Overlay bloqueador -->
+  <div class="overlay" id="overlay"></div>
+
+  <script>
+    // Data de início
+    const startDate = new Date('2024-04-14'); // Altere para a sua data de início
+    const today = new Date();
+    const diffTime = Math.abs(today - startDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Converte para dias
+
+    // Atualiza o contador na página
+    document.getElementById('dayCounter').innerText = `📅 ${diffDays} Dias Juntos`;
+
+    function showCounter() {
+      showMessage(`📅\n\n Já se fazem ${diffDays}...\nMinha felicade começou nessa época e só continua crescendo!\n\t`);
+    }
+
+    function showMessage(message) {
+      document.getElementById('messageText').innerText = message;
+      document.getElementById('messageBox').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block'; // Mostra o bloqueio
+      document.body.classList.add('blurred'); // Aplica o desfoque no restante do site
+    }
+
+    function hideMessage() {
+      document.getElementById('messageBox').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none'; // Esconde o bloqueio
+      document.body.classList.remove('blurred'); // Remove o desfoque
+    }
+
+    function stopAnimation() {
+      var specialElement = document.getElementById("specialAnimation");
+      specialElement.classList.remove("shake");
+      specialElement.classList.add("button");
+    }
+  </script>
+</body>
+</html>
